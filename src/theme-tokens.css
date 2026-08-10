@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@reference "../index.css";
+
+:root {
+  --radius: 0.375rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --spacing-unit: 0.25rem;
+
+  /* Surfaces - dark monochrome with subtle blue tint */
+  --background: 225 6% 8%;
+  --foreground: 225 6% 92%;
+  --card: 225 6% 11%;
+  --card-foreground: 225 6% 92%;
+  --popover: 225 6% 11%;
+  --popover-foreground: 225 6% 92%;
+
+  /* Brand */
+  --primary: 245 58% 64%;
+  --primary-foreground: 225 6% 8%;
+  --secondary: 225 6% 14%;
+  --secondary-foreground: 225 6% 92%;
+
+  /* Utility */
+  --muted: 225 6% 14%;
+  --muted-foreground: 225 6% 64%;
+  --accent: 245 58% 64%;
+  --accent-foreground: 225 6% 8%;
+  --destructive: 0 60% 58%;
+
+  /* Chrome */
+  --border: 225 6% 18%;
+  --input: 225 6% 24%;
+  --ring: 245 58% 64%;
+
+  /* Charts - mapped to zone colors */
+  --chart-1: 33 100% 61%;    /* Kiosques #fdab3d */
+  --chart-2: 150 100% 39%;   /* Terrain synthétique #00c875 */
+  --chart-3: 349 72% 53%;    /* Asphalte #df2f4a */
+  --chart-4: 201 100% 35%;   /* Zone démo #007eb5 */
+  --chart-5: 271 60% 59%;    /* Zone Famille #9d50dd */
+
+  /* Sidebar */
+  --sidebar: 225 6% 11%;
+  --sidebar-foreground: 225 6% 92%;
+  --sidebar-primary: 245 58% 64%;
+  --sidebar-primary-foreground: 225 6% 8%;
+  --sidebar-accent: 225 6% 14%;
+  --sidebar-accent-foreground: 225 6% 92%;
+  --sidebar-border: 225 6% 18%;
+  --sidebar-ring: 245 58% 64%;
+
+  /* Additional surfaces for elevation */
+  --surface-1: 225 6% 11%;
+  --surface-2: 225 6% 14%;
+  --surface-3: 225 6% 18%;
+  --border-subtle: 225 6% 18%;
+  --border-default: 225 6% 24%;
+  --accent-soft: 245 58% 64% / 0.12;
+}
+
+.dark {
+  --background: 225 6% 8%;
+  --foreground: 225 6% 92%;
+  --card: 225 6% 11%;
+  --card-foreground: 225 6% 92%;
+  --popover: 225 6% 11%;
+  --popover-foreground: 225 6% 92%;
+  --primary: 245 58% 64%;
+  --primary-foreground: 225 6% 8%;
+  --secondary: 225 6% 14%;
+  --secondary-foreground: 225 6% 92%;
+  --muted: 225 6% 14%;
+  --muted-foreground: 225 6% 64%;
+  --accent: 245 58% 64%;
+  --accent-foreground: 225 6% 8%;
+  --destructive: 0 60% 58%;
+  --border: 225 6% 18%;
+  --input: 225 6% 24%;
+  --ring: 245 58% 64%;
+  --chart-1: 33 100% 61%;
+  --chart-2: 150 100% 39%;
+  --chart-3: 349 72% 53%;
+  --chart-4: 201 100% 35%;
+  --chart-5: 271 60% 59%;
+  --sidebar: 225 6% 11%;
+  --sidebar-foreground: 225 6% 92%;
+  --sidebar-primary: 245 58% 64%;
+  --sidebar-primary-foreground: 225 6% 8%;
+  --sidebar-accent: 225 6% 14%;
+  --sidebar-accent-foreground: 225 6% 92%;
+  --sidebar-border: 225 6% 18%;
+  --sidebar-ring: 245 58% 64%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-feature-settings: "ss01", "ss02", "tnum";
+  letter-spacing: -0.005em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}

@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && wrangler deploy"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
@@ -18,5 +19,8 @@
     "tailwindcss": "latest",
     "@tailwindcss/vite": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "latest",
+    "wrangler": "latest"
+  }
 }

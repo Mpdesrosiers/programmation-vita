@@ -60,34 +60,68 @@ const activities = [
   },
 ];
 
-const timeSlots = Array.from({ length: 25 }, (_, i) => {
-  const totalMinutes = 5 * 60 + 30 + i * 30;
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-
-  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
-    2,
-    "0"
-  )}`;
-});
+const timeSlots = [
+  "05:30",
+  "06:00",
+  "06:30",
+  "07:00",
+  "07:30",
+  "08:00",
+  "08:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
+  "20:30",
+  "21:00",
+  "21:30",
+  "22:00",
+  "22:30",
+  "23:00",
+  "23:30",
+];
 
 function App() {
   const [selectedDay, setSelectedDay] = useState("Vendredi");
   const [selectedVolet, setSelectedVolet] = useState("Tous");
 
   const filteredActivities = useMemo(() => {
-    return activities.filter(
-      (activity) =>
+    return activities.filter(function (activity) {
+      return (
         activity.day === selectedDay &&
-        (selectedVolet === "Tous" || activity.volet === selectedVolet)
-    );
+        (selectedVolet === "Tous" ||
+          activity.volet === selectedVolet)
+      );
+    });
   }, [selectedDay, selectedVolet]);
 
   return (
     <div className="min-h-screen bg-[#151619] text-[#ebebed]">
+
       <header className="border-b border-[#303137] bg-[#1b1c20] px-6 py-5">
         <div className="mx-auto max-w-[1800px]">
+
           <div className="flex flex-wrap items-center justify-between gap-4">
+
             <div>
               <p className="text-sm font-medium text-[#8580d9]">
                 FESTIVAL VITA 2026
@@ -99,106 +133,138 @@ function App() {
             </div>
 
             <div className="flex items-center gap-2">
-              {["Vendredi", "Samedi"].map((day) => (
-                <button
-                  key={day}
-                  onClick={() => setSelectedDay(day)}
-                  className={`rounded-md px-4 py-2 text-sm font-medium transition ${
-                    selectedDay === day
-                      ? "bg-[#8580d9] text-[#151619]"
-                      : "bg-[#303137] text-[#ebebed] hover:bg-[#3c3d43]"
-                  }`}
-                >
-                  {day}
-                </button>
-              ))}
+
+              {["Vendredi", "Samedi"].map(function (day) {
+                return (
+                  <button
+                    key={day}
+                    onClick={function () {
+                      setSelectedDay(day);
+                    }}
+                    className={
+                      "rounded-md px-4 py-2 text-sm font-medium transition " +
+                      (selectedDay === day
+                        ? "bg-[#8580d9] text-[#151619]"
+                        : "bg-[#303137] text-[#ebebed] hover:bg-[#3c3d43]")
+                    }
+                  >
+                    {day}
+                  </button>
+                );
+              })}
 
               <select
                 value={selectedVolet}
-                onChange={(e) => setSelectedVolet(e.target.value)}
+                onChange={function (event) {
+                  setSelectedVolet(event.target.value);
+                }}
                 className="rounded-md border border-[#3c3d43] bg-[#1b1c20] px-3 py-2 text-sm"
               >
-                <option>Tous</option>
-                <option>BOUGER</option>
-                <option>FÊTER</option>
-                <option>S'INSPIRER</option>
+                <option value="Tous">Tous</option>
+                <option value="BOUGER">BOUGER</option>
+                <option value="FÊTER">FÊTER</option>
+                <option value="S'INSPIRER">S'INSPIRER</option>
               </select>
+
             </div>
           </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-[1800px] overflow-x-auto p-6">
+
         <div
           className="grid min-w-[1300px]"
           style={{
-            gridTemplateColumns: "90px repeat(7, minmax(160px, 1fr))",
+            gridTemplateColumns:
+              "90px repeat(7, minmax(160px, 1fr))",
           }}
         >
-          <div className="sticky left-0 z-20 border-b border-r border-[#303137] bg-[#151619]" />
 
-          {zones.map((zone) => (
-            <div
-              key={zone}
-              className="border-b border-r border-[#303137] bg-[#1b1c20] px-3 py-4 text-center text-sm font-semibold"
-            >
+          <div className="border-b border-r border-[#303137] bg-[#151619]" />
+
+          {zones.map(function (zone) {
+            return (
               <div
-                className="mx-auto mb-2 h-1 w-8 rounded-full"
-                style={{ backgroundColor: zoneColors[zone] }}
-              />
+                key={zone}
+                className="border-b border-r border-[#303137] bg-[#1b1c20] px-3 py-4 text-center text-sm font-semibold"
+              >
+                <div
+                  className="mx-auto mb-2 h-1 w-8 rounded-full"
+                  style={{
+                    backgroundColor: zoneColors[zone],
+                  }}
+                />
 
-              {zone}
-            </div>
-          ))}
-
-          {timeSlots.map((time) => (
-            <React.Fragment key={time}>
-              <div className="border-b border-r border-[#303137] bg-[#151619] px-2 py-3 text-right text-xs text-[#a1a1a8]">
-                {time}
+                {zone}
               </div>
+            );
+          })}
 
-              {zones.map((zone) => {
-                const matchingActivities = filteredActivities.filter(
-                  (activity) =>
-                    activity.zone === zone &&
-                    activity.start <= time &&
-                    activity.end > time
-                );
+          {timeSlots.map(function (time) {
+            return (
+              <React.Fragment key={time}>
 
-                return (
-                  <div
-                    key={`${time}-${zone}`}
-                    className="relative min-h-[52px] border-b border-r border-[#303137] bg-[#151619]"
-                  >
-                    {matchingActivities.map((activity) => (
-                      <div
-                        key={activity.id}
-                        className="absolute inset-x-1 top-1 z-10 rounded-md p-2 text-xs shadow-lg"
-                        style={{
-                          backgroundColor: zoneColors[activity.zone],
-                          color: "#151619",
-                        }}
-                      >
-                        <div className="font-semibold">
-                          {activity.name}
-                        </div>
+                <div className="border-b border-r border-[#303137] bg-[#151619] px-2 py-3 text-right text-xs text-[#a1a1a8]">
+                  {time}
+                </div>
 
-                        <div className="mt-1 opacity-80">
-                          {activity.start} – {activity.end}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                );
-              })}
-            </React.Fragment>
-          ))}
+                {zones.map(function (zone) {
+
+                  const matchingActivities =
+                    filteredActivities.filter(function (activity) {
+                      return (
+                        activity.zone === zone &&
+                        activity.start <= time &&
+                        activity.end > time
+                      );
+                    });
+
+                  return (
+                    <div
+                      key={time + "-" + zone}
+                      className="relative min-h-[52px] border-b border-r border-[#303137] bg-[#151619]"
+                    >
+
+                      {matchingActivities.map(function (activity) {
+                        return (
+                          <div
+                            key={activity.id}
+                            className="absolute inset-x-1 top-1 z-10 rounded-md p-2 text-xs shadow-lg"
+                            style={{
+                              backgroundColor:
+                                zoneColors[activity.zone],
+                              color: "#151619",
+                            }}
+                          >
+
+                            <div className="font-semibold">
+                              {activity.name}
+                            </div>
+
+                            <div className="mt-1 opacity-80">
+                              {activity.start} – {activity.end}
+                            </div>
+
+                          </div>
+                        );
+                      })}
+
+                    </div>
+                  );
+                })}
+
+              </React.Fragment>
+            );
+          })}
+
         </div>
       </main>
 
       <footer className="border-t border-[#303137] px-6 py-4 text-center text-xs text-[#a1a1a8]">
         Programmation VITA 2026
       </footer>
+
     </div>
   );
 }

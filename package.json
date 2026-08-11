@@ -14,7 +14,9 @@
     "react": "latest",
     "react-dom": "latest",
     "lucide-react": "latest",
-    "sonner": "latest"
+    "sonner": "latest",
+    "tailwindcss": "latest",
+    "@tailwindcss/vite": "latest"
   },
   "devDependencies": {}
 }
